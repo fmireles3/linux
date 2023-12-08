@@ -1,0 +1,68 @@
+#Start Apps
+exec --no-startup-id nitrogen --restore
+#exec_always --no-startup-id picom
+exec_always --no-startup-id ~/.config/i3/i3-alternating-layout/alternating_layouts.py
+exec_always --no-startup-id xinput disable "ELAN Touchscreen"
+exec_always --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
+#exec_always --no-startup-id j4-dmenu-desktop --dmenu="rofi -show drun -theme ~/.config/rofi/launchers/type-2/style-6.rasi"
+#exec_always --no-startup-id j4-dmenu-desktop --dmenu="rofi -show drun -theme ~/.config/rofi/nord.rasi"
+exec --no-startup-id rofi -show drun -theme ~/.config/rofi/nord.rasi
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id xset dpms 0 0 160
+#exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
+#sudo systemctl restart pcscd.socket
+
+# set the mod key
+set $mod Mod4
+
+#gaps
+#smart_gaps on
+#smart_borders on
+#gaps inner 6
+#gaps outer -2
+hide_edge_borders smart_no_gaps
+
+#default_border pixel 4
+for_window [class="^.*"] border pixel 2
+
+# switch to workspace
+bindsym $mod+1    workspace  $ws1
+#bindsym $mod+2    workspace  $ws2
+#bindsym $mod+3    workspace  $ws3
+
+# move focused container to workspace
+bindsym $mod+Shift+1    move container to workspace  $ws1
+#bindsym $mod+Shift+2    move container to workspace  $ws2
+#bindsym $mod+Shift+3    move container to workspace  $ws3
+
+# start a terminal
+#bindsym $mod+Return exec gnome-terminal 
+bindsym $mod+Return exec xfce4-terminal
+#kill focused window
+bindsym $mod+q kill
+#launch web browser
+bindsym $mod+b exec firefox
+#launch settings
+bindsym $mod+s exec gnome-control-center
+#launch file manager
+#bindsym $mod+f exec nautilus
+bindsym $mod+f exec thunar
+#app launcher
+bindsym $mod+space exec rofi -show drun -theme ~/.config/rofi/nord.rasi
+#bindsym $mod+space exec j4-dmenu-desktop --dmenu="rofi -show drun -theme ~/.config/rofi/nord.rasi"
+
+# exit-menu
+#bindsym $mod+Shift+l exec i3-msg exit
+bindsym $mod+Shift+l exec startx; exit
+bindsym $mod+Shift+r exec systemctl reboot
+bindsym $mod+Shift+s exec systemctl poweroff
+
+# restart i3 inplace 
+bindsym $mod+Shift+i restart
+
+# set floating (nontiling) for special apps
+for_window [window_role="About"] floating enable
+for_window [window_role="gnome-calculator"] floating enable
+
+# set position of floating window
+for_window [class=".*"] move position center
