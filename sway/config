@@ -1,0 +1,63 @@
+# Default config for sway
+set $mod Mod4
+
+#Autostart
+exec ~/.config/i3/i3-alternating-layout/alternating_layouts.py
+exec j4-dmenu-desktop --dmenu="rofi -show drun -theme ~/.config/rofi/nord.rasi"
+#exec /usr/libexec/polkit-gnome-authetication-agent-1
+exec export DISPLAY=:0
+exec "dbus-update-activation-environment --systemd DISPLAY"
+
+#Gaps
+gaps inner 5
+gaps outer 0
+smart_gaps on
+smart_borders on
+
+#Borders
+default_border pixel 2 
+default_floating_border pixel 2
+
+#Wallpaper
+output * bg /home/fmireles3/Downloads/Wallpapers/sebastian-svenson-d2w-_1LJioQ-unsplash.jpg fill
+
+#Key bindings
+# Start a terminal
+bindsym $mod+Return exec gnome-terminal
+# Kill focused window
+bindsym $mod+q kill
+#Reboot and Shutdown
+bindsym $mod+Shift+r exec systemctl reboot
+bindsym $mod+Shift+s exec systemctl poweroff
+#launch App Launcher
+bindsym $mod+Space exec j4-dmenu-desktop --dmenu="rofi -show drun -theme ~/.config/rofi/nord.rasi"
+#Reload the configuration file
+bindsym $mod+Shift+i exec swaymsg reload
+#Logout of sway
+bindsym $mod+Shift+l exec swaymsg exit 
+#launch Browser
+bindsym $mod+b exec firefox
+#launch settings
+bindsym $mod+s exec gnome-control-center
+#launch file manager
+bindsym $mod+f exec nautilus
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+
+# set floating (nontiling) for special apps
+#for_window [app_id="About"] floating enable
+for_window [app_id="gnome-calculator"] floating enable
+
+# set position of floating window
+for_window [app_id=".*"] border pixel 2 move position center
+
+#Turn off screen when idle
+exec swayidle -w timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+
+

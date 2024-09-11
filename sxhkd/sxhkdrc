@@ -1,0 +1,42 @@
+#App Launch
+super + Return
+	gnome-terminal
+
+super + space
+	j4-dmenu-desktop --dmenu="rofi -show drun -theme ~/.config/rofi/nord.rasi"
+
+super + b 
+	firefox
+
+super + f
+	nautilus
+
+super + s 
+	gnome-control-center
+
+#reload config file
+#super + shift + i
+#	pkill -USR1 -x sxhkd
+
+# quit/restart bspwm
+#super + shift + {l,r}
+#	bspc {quit,wm -r}
+super + shift + l
+	bspc quit
+
+super + shift + i
+	pkill -USR1 -x sxhkd && bspc wm -r
+
+# close window
+super + q
+	bspc node -c
+
+# focus or send to the given desktop
+super + {_,shift + }{1-3,0}
+	bspc {desktop -f,node -d} '^{1-3,10}'
+
+super + shift + r
+	systemctl reboot
+	
+super + shift + s
+	systemctl shutdown
