@@ -1,0 +1,63 @@
+#Autostart
+exec --no-startup-id sleep 1; nitrogen --restore
+exec_always --no-startup-id sleep 10; picom
+exec_always --no-startup-id sleep 5; ~/.config/i3/i3-alternating-layout/alternating_layouts.py
+exec --no-startup-id sleep 1; j4-dmenu-desktop --dmenu="rofi -show drun -theme ~/.config/rofi/nord.rasi"
+#exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id sleep 60; xset dpms 0 0 360
+#exec --no-startup-id workspace 1; exec firefox
+exec --no-startup-id sleep 8; numlockx on
+#sudo systemctl restart pcscd.socket
+
+# set the mod key to the winkey:
+set $mod Mod4
+
+#gaps
+gaps inner 5
+gaps outer 0
+
+#smart_gaps on 
+smart_gaps on
+smart_borders on
+
+#default_border pixel 4
+for_window [class="^.*"] border pixel 2
+
+# switch to workspace
+bindsym $mod+1    workspace  $ws1
+bindsym $mod+2    workspace  $ws2
+bindsym $mod+3    workspace  $ws3
+
+# move focused container to workspace
+bindsym $mod+Shift+1    move container to workspace  $ws1
+bindsym $mod+Shift+2    move container to workspace  $ws2
+bindsym $mod+Shift+3    move container to workspace  $ws3
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal 
+# kill focused window
+bindsym $mod+q kill
+#launch webbrower
+bindsym $mod+b exec firefox
+#launch settings
+bindsym $mod+s exec gnome-control-center
+#launch file manager
+bindsym $mod+f exec nautilus
+
+#app launcher
+bindsym $mod+space exec j4-dmenu-desktop --dmenu="rofi -show drun -theme ~/.config/rofi/nord.rasi"
+
+# exit-menu
+bindsym $mod+Shift+l exec i3-msg exit
+bindsym $mod+Shift+r exec systemctl reboot
+bindsym $mod+Shift+s exec systemctl poweroff
+
+# restart i3 inplace
+bindsym $mod+Shift+i restart
+
+# set floating (nontiling) for special apps
+for_window [window_role="gnome-calculator"] floating enable
+
+# set position of floating window
+for_window [class=".*"] move position center
+
