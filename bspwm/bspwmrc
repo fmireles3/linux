@@ -1,0 +1,39 @@
+#! /bin/sh
+
+#Autostart
+feh --bg-fill ~/Downloads/Wallpapers/unsplash.jpg &
+rofi -show drun -matching prefix -drun-match-fields name -theme ~/.config/rofi/nord.rasi &
+sleep 2 && xinput --set-prop "Dell Computer Corp Dell Laser Mouse MS3220" "libinput Accel Speed" -0.150 &
+sleep 5 && sxhkd &
+sleep 10 && picom &
+sleep 120 && xset dpms 120 360 720 &
+
+#Workspaces
+bspc monitor -d 1 2 3 
+
+#### BSPWM configuration ####
+bspc config border_width                  3
+bspc config window_gap                    6
+bspc config top_padding                   0
+bspc config bottom_padding                0
+bspc config left_padding                  0
+bspc config right_padding                 0
+bspc config single_monocle                true
+bspc config split_ratio                   0.50
+bspc config borderless_monocle            true
+bspc config gapless_monocle               true
+bspc config focus_by_distance             true
+bspc config focus_follows_pointer         true
+#bspc config history_aware_focus           true
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+#for side in top right bottom left; do bspc config ${side}_monocle_padding -1; done
+
+#Remove X cursor
+xsetroot -cursor_name left_ptr &
+
+#### BSPWM coloring ####
+bspc config focused_border_color	      "#5294e2"
+
+bspc rule -a Gnome-calculator state=floating center=true
+
