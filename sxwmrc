@@ -1,0 +1,53 @@
+
+# Colour Themes:
+focused_border_colour    : #5294e2
+unfocused_border_colour  : #000000
+swap_border_colour       : #eeeeee
+
+# General Options:
+gaps                    : 7
+border_width            : 3
+master_width            : 50 # Percentage of screen width
+#snap_distance           : 5
+motion_throttle         : 60 # Set to screen refresh rate for smoothest motions
+should_float            : "gnome-calculator"
+new_win_focus           : true
+warp_cursor             : true
+floating_on_top         : true
+new_win_master          : false
+#can_swallow             : "st"
+#can_be_swallowed        : "mpv", "sxiv"
+#start_fullscreen        : "gnome-terminal", "vlc"
+
+# Keybinds:
+# Commands must be surrounded with ""
+# Function calls don't need this
+mod_key : super
+
+# Application Launchers:
+bind : mod + Return : "gnome-terminal"
+bind : mod + b : "firefox --new-window about:blank"
+bind : mod + space : "rofi -show drun -matching prefix -drun-match-fields name -theme ~/.config/rofi/nord.rasi"
+
+# Window Management:
+call : mod + q : close_window
+#call : mod + c : centre_window
+call : mod + shift + l : quit
+#call : mod + m : toggle_monocle
+
+# Focus Movement:
+call : mod + right : focus_next
+#call : mod + left : focus_prev
+
+# Reload Config
+call : mod + shift + i : reload_config
+# System
+call : mod + shift + r : "systemctl reboot"
+call : mod + shift + s : "systemctl shutdown"
+# Workspaces (1-9)
+workspace : mod + 1          : move 1
+workspace : mod + shift + 1  : swap 1
+workspace : mod + 2          : move 2
+workspace : mod + shift + 2  : swap 2
+workspace : mod + 3          : move 3
+workspace : mod + shift + 3  : swap 3
