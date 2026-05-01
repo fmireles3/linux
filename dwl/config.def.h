@@ -15,7 +15,7 @@ static const float bordercolor[]           = COLOR(0x222222ff);
 static const float focuscolor[]            = COLOR(0x000000ff);
 static const float urgentcolor[]           = COLOR(0x000000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
-static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
+static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 0.0f}; /* You can also use glsl colors */
 
 /* tagging - TAGCOUNT must be no greater than 31 */
 #define TAGCOUNT (3)
@@ -59,15 +59,15 @@ static const struct xkb_rule_names xkb_rules = {
 	.options = NULL,
 };
 
-static const int repeat_rate = 25;
-static const int repeat_delay = 600;
+static const int repeat_rate = 35;
+static const int repeat_delay = 200;
 
 /* Trackpad */ 
-static const int tap_to_click = 1;
-static const int tap_and_drag = 1;
-static const int drag_lock = 1;
+static const int tap_to_click = 0;
+static const int tap_and_drag = 0;
+static const int drag_lock = 0;
 static const int natural_scrolling = 0;
-static const int disable_while_typing = 1;
+static const int disable_while_typing = 0;
 static const int left_handed = 0;
 static const int middle_button_emulation = 0;
 /* You can choose between:
@@ -119,7 +119,8 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "footclient", NULL };
-static const char *menucmd[] = { "fuzzel", NULL };
+/* static const char *menucmd[] = { "rofi", "-show", "drun", "-matching prefix", "-drun-match-fields", "name", "-theme", "~/.config/rofi/nord.rasi", NULL }; */
+static const char *menucmd[] = { "fuzzel" };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
@@ -168,11 +169,11 @@ static const Key keys[] = {
 	 */
 #define CHVT(n) { WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_XF86Switch_VT_##n, chvt, {.ui = (n)} }
 	CHVT(1), CHVT(2), CHVT(3), CHVT(4), CHVT(5), CHVT(6),
-	CHVT(7), CHVT(8), CHVT(9), CHVT(10), CHVT(11), CHVT(12),
+	CHVT(7), CHVT(8), CHVT(9), CHVT(10), CHVT(11), CHVT(12), 
 };
 
 static const Button buttons[] = {
 	{ MODKEY, BTN_LEFT,   moveresize,     {.ui = CurMove} },
 /*	{ MODKEY, BTN_MIDDLE, togglefloating, {0} }, */
-	{ MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize} },
+/*	{ MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize} }, */
 };
