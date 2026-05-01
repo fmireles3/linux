@@ -1,0 +1,10 @@
+GREEN='\033[1;32m'
+BLUE='\033[1;34m'
+RESET='\033[0m'
+
+USER_NAME=$(whoami)
+HOST_NAME=$(hostname)
+
+PS1="${GREEN}${USER_NAME}@${HOST_NAME}${BLUE}:$(pwd)${RESET}\$ "
+
+
