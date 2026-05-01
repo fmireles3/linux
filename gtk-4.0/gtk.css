@@ -69,7 +69,7 @@ toggle:checked {
   color: #ffffff;
 }
 
-/* Enter any extra CSS here */
+/* Enter any extra CSS here*/
 windowcontrols:backdrop > button {
     opacity: 0.7;
 }
@@ -129,7 +129,6 @@ windowcontrols:not(.macos):not(.colored):not(.default):not(.empty).start:dir(rtl
 }
 
 windowcontrols:not(.macos):not(.colored):not(.default) > button:not(.suggested-action):not(.destructive-action) > image {
-  /* border-radius: 100%; */
   min-width: 17px;
   min-height: 17px;
   padding: 0;
@@ -143,3 +142,28 @@ windowcontrols:not(.macos):not(.colored):not(.default) > button:not(.suggested-a
 
 @define-color accent_bg_color #3584e4;
 @define-color accent_fg_color @window_bg_color;
+
+/* Target Libadwaita window controls */
+windowcontrols {
+    opacity: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* Fallback for older selectors */
+headerbar button {
+    opacity: 0;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* Remove spacing completely */
+headerbar {
+    padding: 0;
+}
+
+headerbar box {
+    spacing: 0;
+}

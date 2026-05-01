@@ -6,11 +6,10 @@ exec ~/.config/sway/i3-alternating-layout/alternating_layouts.py
 exec rofi -show drun -matching prefix -drun-match-fields name -theme ~/.config/rofi/nord.rasi
 exec export DISPLAY=:0
 exec "dbus-update-activation-environment --systemd DISPLAY"
-exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
 #Gaps
-#gaps inner 5
-#gaps outer 2
+gaps inner 4
+gaps outer 1
 smart_gaps on
 smart_borders on
 
@@ -20,18 +19,18 @@ default_floating_border pixel 3
 
 #Border Colors
 client.focused #5294e2 #5294e2 #5294e2 #5294e2 #5294e2
-#client.focused #E95420 #E95420 #E95420 #E95420 #E95420
-client.unfocused #000000 #000000 #000000 #000000 #000000
-client.focused_inactive #000000 #000000 #000000 #000000 #000000
+client.unfocused #ffffff00 #ffffff00 #ffffff00 #ffffff00 #ffffff00
+client.focused_inactive #ffffff00 #ffffff00 #ffffff00 #ffffff00 #ffffff00
 
 #Wallpaper
-#output * bg /home/fmireles3/Downloads/wallpaper.jpg fill
-output * bg #000000 solid_color
+#output * bg /home/fmireles3/Downloads/Wallpapers/unsplash.jpg fill
+output * bg #222222 solid_color
 
 #Key bindings
 # Start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec gnome-terminal
 # Kill focused window
+
 bindsym $mod+q kill
 #Reboot and Shutdown
 bindsym $mod+Shift+r exec systemctl reboot
@@ -45,9 +44,9 @@ bindsym $mod+Shift+l exec swaymsg exit
 #launch browser
 bindsym $mod+b exec firefox --new-window about:blank
 #launch settings
-#bindsym $mod+s exec gnome-control-center
+bindsym $mod+s exec gnome-control-center
 #launch file manager
-bindsym $mod+f exec yazi
+bindsym $mod+f exec nautilus
 
 #switch to workspace
 bindsym $mod+1 workspace number 1
@@ -58,8 +57,8 @@ bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
 
 #set floating (nontiling) for special apps
-#for_window [app_id="About"] floating enable
-#for_window [app_id="wiremix"] floating enable
+for_window [app_id="About"] floating enable
+for_window [app_id="gnome-calculator"] floating enable
 
 #set position of floating window
 for_window [app_id=".*"] border pixel 3 move position center
@@ -70,13 +69,5 @@ exec swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "outp
 #move windows with mouse
 floating_modifier $mod normal
 
-#change focus on windows
-#bindsym $mod+tab focus right
-
-#Move focus
-bindsym $mod+left focus left
-bindsym $mod+right focus right
-bindsym $mod+down focus down
-bindsym $mod+up focus up
 
 
