@@ -14,10 +14,7 @@
     "wm",
     "terminal",
     "cpu",
-    "gpu",
     "memory",
-    "disk",
-    "break",
     "break",
   ]
 }
