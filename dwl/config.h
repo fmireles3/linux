@@ -118,7 +118,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[] = { "footclient", NULL };
+static const char *termcmd[] = { "foot", NULL };
 /* static const char *menucmd[] = { "rofi", "-show", "drun", "-matching prefix", "-drun-match-fields", "name", "-theme", "~/.config/rofi/nord.rasi", NULL }; */
 static const char *menucmd[] = { "fuzzel" };
 
@@ -129,8 +129,8 @@ static const Key keys[] = {
 	{ MODKEY,					 XKB_KEY_Return,      spawn,            {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_Tab,         focusstack,       {.i = +1} },
 	{ MODKEY,                    XKB_KEY_b,           spawn,	        SHCMD("firefox --new-window about:blank") },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_r,           spawn,	        SHCMD("systemctl reboot") },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_s,           spawn,	        SHCMD("systemctl poweroff") },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_r,           spawn,	        SHCMD("doas reboot") },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_s,           spawn,	        SHCMD("doas poweroff") },
 	{ MODKEY,                    XKB_KEY_Up,          incnmaster,       {.i = +1} },
 	{ MODKEY,                    XKB_KEY_Down,        incnmaster,       {.i = -1} },
 	{ MODKEY,                    XKB_KEY_Left,        setmfact,         {.f = -0.05f} },
